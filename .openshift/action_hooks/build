@@ -1,6 +1,6 @@
 #!/bin/bash
 ROOT=$OPENSHIFT_DATA_DIR
-SONAR_VERSION=5.1.1
+SONAR_VERSION=5.1
 
 cd $ROOT
 
@@ -15,7 +15,7 @@ cd sonarqube/conf
 sed -i "s/^#sonar.web.host.*$/sonar.web.host=$OPENSHIFT_DIY_IP/" sonar.properties
 sed -i "s/^#sonar.web.port.*$/sonar.web.port=$OPENSHIFT_DIY_PORT/" sonar.properties
 
-if [[ $OPENSHIFT_MYSQL_DB_URL ]]
+if [[ $OPENSHIFT_MYSQL_DB_HOST ]]
 then
   sed -i "s/^sonar.jdbc.username.*$/sonar.jdbc.username=$OPENSHIFT_MYSQL_DB_USERNAME/" sonar.properties
   sed -i "s/^sonar.jdbc.password.*$/sonar.jdbc.password=$OPENSHIFT_MYSQL_DB_PASSWORD/" sonar.properties
